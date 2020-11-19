@@ -19,19 +19,44 @@ public void draw()
   }
   bob.show();
   bob.move();
+  if(left){
+    bob.turn(-6);
+  }
+  if(right){
+    bob.turn(6);
+  }
+  if(up){
+    bob.accelerate(0.2);
+  }
 }
+
+boolean left,right,up = false;
+
 public void keyPressed(){
   if(key == 'a'){
-    bob.turn(-5);
+    left =  true;
   }
   if(key == 'd'){
-    bob.turn(5);
-  }
-  if(key == 'w'){
-    bob.accelerate(0.2);
+    right = true;
   }
   if(key == 's'){
     bob.hyperspace();
   }
-  
+  if(key == 'w'){
+    up = true;
+    bob.setRocket(true);
+  }
+}
+
+public void keyReleased(){
+  if(key == 'a'){
+    left = false; 
+  }
+  if(key == 'd'){
+    right = false; 
+  }
+  if(key == 'w'){
+    up = false;
+    bob.setRocket(false);
+  }
 }
