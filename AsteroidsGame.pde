@@ -1,8 +1,12 @@
 //your variable declarations here
+ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
 Spaceship bob = new Spaceship();
 Star[] stars = new Star[100];
 public void setup() 
 {
+  for(int x = 0; x < 5; x++){
+    asteroids.add(new Asteroid());
+  }
   //your code here
   size(1000,1000);
   background(0);
@@ -16,6 +20,17 @@ public void draw()
   background(0);
   for(int i = 0; i < stars.length; i++){
     stars[i].show();
+  }
+  for(int x = 0; x < asteroids.size(); x++){
+    double shipX = bob.getCenterX();
+    double shipY = bob.getCenterY();
+    double rockX = asteroids.get(x).getCenterX();
+    double rockY = asteroids.get(x).getCenterY();
+    asteroids.get(x).show();
+    asteroids.get(x).move();
+    if(dist((float)shipX,(float)shipY,(float)rockX,(float)rockY) < 50){
+      asteroids.remove(x);
+    }
   }
   bob.show();
   bob.move();
