@@ -1,8 +1,8 @@
 class Spaceship extends Floater  
 {   
     //your code here
-    boolean rocketFire;
-    Spaceship(){
+    private boolean rocketFire;
+    private Spaceship(){
       corners = 3;
       xCorners = new int[corners];
       yCorners = new int[corners];
@@ -65,5 +65,13 @@ class Spaceship extends Floater
   
   public void setRocket(boolean x){
     rocketFire = x;
+  }
+  
+  public double getCenterX(){
+    return myCenterX;
+  }
+  
+  public double getCenterY(){
+    return myCenterY;
   }
 }
